@@ -11,7 +11,38 @@
 		DADDC84528480A600056EBB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADDC84428480A600056EBB1 /* ContentView.swift */; };
 		DADDC84728480A610056EBB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADDC84628480A610056EBB1 /* Assets.xcassets */; };
 		DADDC84A28480A610056EBB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADDC84928480A610056EBB1 /* Preview Assets.xcassets */; };
+		DADDC85828480A940056EBB1 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADDC85728480A940056EBB1 /* NetworkExtension.framework */; };
+		DADDC85B28480A940056EBB1 /* MinimalVPNPacketTunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADDC85A28480A940056EBB1 /* MinimalVPNPacketTunnel.swift */; };
+		DADDC86028480A940056EBB1 /* MinimalVPNPacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DADDC85528480A940056EBB1 /* MinimalVPNPacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DADDC86528480ACE0056EBB1 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADDC85728480A940056EBB1 /* NetworkExtension.framework */; };
+		DADDC867284812500056EBB1 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADDC866284812500056EBB1 /* VPNManager.swift */; };
+		DADDC86A2848171D0056EBB1 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = DADDC8692848171D0056EBB1 /* Logging */; };
+		DADDC86D284817960056EBB1 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = DADDC86C284817960056EBB1 /* Logging */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DADDC85E28480A940056EBB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DADDC83728480A600056EBB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DADDC85428480A940056EBB1;
+			remoteInfo = MinimalVPNPacketTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DADDC86428480A940056EBB1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DADDC86028480A940056EBB1 /* MinimalVPNPacketTunnel.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DADDC83F28480A600056EBB1 /* MinimalVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,6 +51,12 @@
 		DADDC84628480A610056EBB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DADDC84928480A610056EBB1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DADDC84B28480A610056EBB1 /* MinimalVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinimalVPN.entitlements; sourceTree = "<group>"; };
+		DADDC85528480A940056EBB1 /* MinimalVPNPacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MinimalVPNPacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DADDC85728480A940056EBB1 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		DADDC85A28480A940056EBB1 /* MinimalVPNPacketTunnel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalVPNPacketTunnel.swift; sourceTree = "<group>"; };
+		DADDC85C28480A940056EBB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DADDC85D28480A940056EBB1 /* MinimalVPNPacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinimalVPNPacketTunnel.entitlements; sourceTree = "<group>"; };
+		DADDC866284812500056EBB1 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +64,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADDC86A2848171D0056EBB1 /* Logging in Frameworks */,
+				DADDC86528480ACE0056EBB1 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DADDC85228480A940056EBB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DADDC86D284817960056EBB1 /* Logging in Frameworks */,
+				DADDC85828480A940056EBB1 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				DADDC84128480A600056EBB1 /* MinimalVPN */,
+				DADDC85928480A940056EBB1 /* MinimalVPNPacketTunnel */,
+				DADDC85628480A940056EBB1 /* Frameworks */,
 				DADDC84028480A600056EBB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				DADDC83F28480A600056EBB1 /* MinimalVPN.app */,
+				DADDC85528480A940056EBB1 /* MinimalVPNPacketTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,6 +108,7 @@
 				DADDC84628480A610056EBB1 /* Assets.xcassets */,
 				DADDC84B28480A610056EBB1 /* MinimalVPN.entitlements */,
 				DADDC84828480A610056EBB1 /* Preview Content */,
+				DADDC866284812500056EBB1 /* VPNManager.swift */,
 			);
 			path = MinimalVPN;
 			sourceTree = "<group>";
@@ -69,6 +121,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DADDC85628480A940056EBB1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DADDC85728480A940056EBB1 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DADDC85928480A940056EBB1 /* MinimalVPNPacketTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				DADDC85A28480A940056EBB1 /* MinimalVPNPacketTunnel.swift */,
+				DADDC85C28480A940056EBB1 /* Info.plist */,
+				DADDC85D28480A940056EBB1 /* MinimalVPNPacketTunnel.entitlements */,
+			);
+			path = MinimalVPNPacketTunnel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +149,40 @@
 				DADDC83B28480A600056EBB1 /* Sources */,
 				DADDC83C28480A600056EBB1 /* Frameworks */,
 				DADDC83D28480A600056EBB1 /* Resources */,
+				DADDC86428480A940056EBB1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DADDC85F28480A940056EBB1 /* PBXTargetDependency */,
+			);
+			name = MinimalVPN;
+			packageProductDependencies = (
+				DADDC8692848171D0056EBB1 /* Logging */,
+			);
+			productName = MinimalVPN;
+			productReference = DADDC83F28480A600056EBB1 /* MinimalVPN.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DADDC85428480A940056EBB1 /* MinimalVPNPacketTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DADDC86128480A940056EBB1 /* Build configuration list for PBXNativeTarget "MinimalVPNPacketTunnel" */;
+			buildPhases = (
+				DADDC85128480A940056EBB1 /* Sources */,
+				DADDC85228480A940056EBB1 /* Frameworks */,
+				DADDC85328480A940056EBB1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MinimalVPN;
-			productName = MinimalVPN;
-			productReference = DADDC83F28480A600056EBB1 /* MinimalVPN.app */;
-			productType = "com.apple.product-type.application";
+			name = MinimalVPNPacketTunnel;
+			packageProductDependencies = (
+				DADDC86C284817960056EBB1 /* Logging */,
+			);
+			productName = MinimalVPNPacketTunnel;
+			productReference = DADDC85528480A940056EBB1 /* MinimalVPNPacketTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -102,6 +197,9 @@
 					DADDC83E28480A600056EBB1 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
+					DADDC85428480A940056EBB1 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 				};
 			};
 			buildConfigurationList = DADDC83A28480A600056EBB1 /* Build configuration list for PBXProject "MinimalVPN" */;
@@ -113,11 +211,16 @@
 				Base,
 			);
 			mainGroup = DADDC83628480A600056EBB1;
+			packageReferences = (
+				DADDC8682848171D0056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */,
+				DADDC86B284817960056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */,
+			);
 			productRefGroup = DADDC84028480A600056EBB1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DADDC83E28480A600056EBB1 /* MinimalVPN */,
+				DADDC85428480A940056EBB1 /* MinimalVPNPacketTunnel */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +235,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DADDC85328480A940056EBB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -140,11 +250,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				DADDC84528480A600056EBB1 /* ContentView.swift in Sources */,
+				DADDC867284812500056EBB1 /* VPNManager.swift in Sources */,
 				DADDC84328480A600056EBB1 /* MinimalVPNApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DADDC85128480A940056EBB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DADDC85B28480A940056EBB1 /* MinimalVPNPacketTunnel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DADDC85F28480A940056EBB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DADDC85428480A940056EBB1 /* MinimalVPNPacketTunnel */;
+			targetProxy = DADDC85E28480A940056EBB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DADDC84C28480A610056EBB1 /* Debug */ = {
@@ -263,6 +390,7 @@
 		DADDC84F28480A610056EBB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MinimalVPN/MinimalVPN.entitlements;
@@ -290,6 +418,7 @@
 		DADDC85028480A610056EBB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MinimalVPN/MinimalVPN.entitlements;
@@ -309,6 +438,60 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.MinimalVPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DADDC86228480A940056EBB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MinimalVPNPacketTunnel/MinimalVPNPacketTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalVPNPacketTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MinimalVPNPacketTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.MinimalVPN.MinimalVPNPacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DADDC86328480A940056EBB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MinimalVPNPacketTunnel/MinimalVPNPacketTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalVPNPacketTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MinimalVPNPacketTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.MinimalVPN.MinimalVPNPacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -335,7 +518,48 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		DADDC86128480A940056EBB1 /* Build configuration list for PBXNativeTarget "MinimalVPNPacketTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DADDC86228480A940056EBB1 /* Debug */,
+				DADDC86328480A940056EBB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DADDC8682848171D0056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.2;
+			};
+		};
+		DADDC86B284817960056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DADDC8692848171D0056EBB1 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DADDC8682848171D0056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		DADDC86C284817960056EBB1 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DADDC86B284817960056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DADDC83728480A600056EBB1 /* Project object */;
 }

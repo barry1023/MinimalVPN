@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    let vpn = VPNManager()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button("Connect")
+        {
+            self.vpn.enable()
+        }
     }
 }
 
