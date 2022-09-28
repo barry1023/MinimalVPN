@@ -15,11 +15,10 @@ class MinimalVPNPacketTunnel: NEPacketTunnelProvider {
 
     public override init()
     {
-        self.logger = Logger(label: "MoonbounceNetworkExtension")
+        self.logger = Logger(label: "MinimalVPNPacketTunnelLog")
         self.logger.logLevel = .debug
 
-        self.logger.debug("Initialized MoonbouncePacketTunnelProvider")
-        self.logger.debug("MoonbouncePacketTunnelProvider.init")
+        self.logger.debug("Initialized MinimalVPNPacketTunnel")
 
         super.init()
     }
@@ -27,17 +26,25 @@ class MinimalVPNPacketTunnel: NEPacketTunnelProvider {
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         completionHandler(nil)
 
-        self.connection = self.createTCPConnection(to: NWHostEndpoint(hostname: "206.189.200.18", port: "8888"), enableTLS: false, tlsParameters: nil, delegate: nil)
+        self.connection = self.createTCPConnection(to: NWHostEndpoint(hostname: "", port: "1234"), enableTLS: false, tlsParameters: nil, delegate: nil)
+        
+        self.logger.debug("startTunnel created a connection. Connection state: \(connection.state)")
+        
         self.connection.write("hello".data(using: .utf8)!)
         {
-            maybeError in
+            maybeWriteError in
 
-            return
+            if let writeError = maybeWriteError
+            {
+                self.logger.error("startTunnel received an error trying to write to the connection: \(writeError)")
+            }
+            else
+            {
+                self.logger.debug("startTunnel wrote some data")
+            }
+            //return
         }
 
-//        let ipv4 = IPv4Address("206.189.200.18")!
-//        let port = NWEndpoint.Port(integerLiteral: 8888)
-//        let connection = NWConnection(host: NWEndpoint.Host.ipv4(ipv4), port: port, using: .tcp)
 //        connection.stateUpdateHandler =
 //        {
 //            (state: NWConnection.State) in
@@ -57,7 +64,7 @@ class MinimalVPNPacketTunnel: NEPacketTunnelProvider {
 //            }
 //        }
     }
-    
+        
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         // Add code here to start the process of stopping the tunnel.
         completionHandler()

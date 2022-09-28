@@ -33,54 +33,55 @@ public class VPNManager
     {
         self.manager.loadFromPreferences
         {
-            param in
+            maybeLoadError in
 
-            print("loadFromPreferences 1")
-            print("\(String(describing: param))")
+            print("VPNManager loadFromPreferences - 1")
+            if let loadError = maybeLoadError
+            {
+                print("VPNManager encountered an error loading from preferences: \(loadError)")
+            }
+            
 
             self.manager.saveToPreferences
             {
-                _ in
+                maybeSaveError in
 
-                print("saveToPreferences 1")
+                print("VPNManager saveToPreferences - 1")
 
                 self.manager.loadFromPreferences
                 {
-                    _ in
+                    maybeNextLoadError in
 
-                    print("loadFromPreferences 2")
+                    print("VPNManager loadFromPreferences - 2")
+                    
+                    if let nextLoadError = maybeNextLoadError
+                    {
+                        print("VPNManager encountered an error on second load from preferences: \(nextLoadError)")
+                    }
 
                     let protocolConfiguration = NETunnelProviderProtocol()
                     let appId = Bundle.main.bundleIdentifier!
                     protocolConfiguration.providerBundleIdentifier = "\(appId).MinimalVPNPacketTunnel"
-                    protocolConfiguration.serverAddress = "206.189.200.18"
+                    protocolConfiguration.serverAddress = ""
                     protocolConfiguration.includeAllNetworks = true
                     self.manager.protocolConfiguration = protocolConfiguration
                     self.manager.localizedDescription = "MinimalVPN"
                     self.manager.isEnabled = true
 
-                    print(protocolConfiguration)
+                    print("***********\nVPNManager protocolConfiguration:\n\(protocolConfiguration)\n***********")
 
                     self.manager.saveToPreferences
                     {
                         _ in
 
-                        print("saveToPreferences 2")
+                        print("VPNManager saveToPreferences - 2")
 
                         self.manager.loadFromPreferences
                         {
                             _ in
 
-                            print("loadFromPreferences 2")
-
-                            self.manager.saveToPreferences
-                            {
-                                _ in
-
-                                print("saveToPreferences 3")
-
-                                print("Done.")
-                            }
+                            print("VPNManager loadFromPreferences - 3")
+                            print("VPNManager enable() is done.")
                         }
                     }
                 }
