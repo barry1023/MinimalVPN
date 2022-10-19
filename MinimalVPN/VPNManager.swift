@@ -13,9 +13,7 @@ public class VPNManager
 {
     let manager = NETunnelProviderManager()
 
-    public init()
-    {
-    }
+    public init() {}
 
     public func load()
     {
