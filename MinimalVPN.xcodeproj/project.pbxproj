@@ -16,8 +16,6 @@
 		DADDC86028480A940056EBB1 /* MinimalVPNPacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DADDC85528480A940056EBB1 /* MinimalVPNPacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DADDC86528480ACE0056EBB1 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADDC85728480A940056EBB1 /* NetworkExtension.framework */; };
 		DADDC867284812500056EBB1 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADDC866284812500056EBB1 /* VPNManager.swift */; };
-		DADDC86A2848171D0056EBB1 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = DADDC8692848171D0056EBB1 /* Logging */; };
-		DADDC86D284817960056EBB1 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = DADDC86C284817960056EBB1 /* Logging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DADDC86A2848171D0056EBB1 /* Logging in Frameworks */,
 				DADDC86528480ACE0056EBB1 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DADDC86D284817960056EBB1 /* Logging in Frameworks */,
 				DADDC85828480A940056EBB1 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +154,6 @@
 			);
 			name = MinimalVPN;
 			packageProductDependencies = (
-				DADDC8692848171D0056EBB1 /* Logging */,
 			);
 			productName = MinimalVPN;
 			productReference = DADDC83F28480A600056EBB1 /* MinimalVPN.app */;
@@ -178,7 +173,6 @@
 			);
 			name = MinimalVPNPacketTunnel;
 			packageProductDependencies = (
-				DADDC86C284817960056EBB1 /* Logging */,
 			);
 			productName = MinimalVPNPacketTunnel;
 			productReference = DADDC85528480A940056EBB1 /* MinimalVPNPacketTunnel.appex */;
@@ -212,8 +206,6 @@
 			);
 			mainGroup = DADDC83628480A600056EBB1;
 			packageReferences = (
-				DADDC8682848171D0056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */,
-				DADDC86B284817960056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = DADDC84028480A600056EBB1 /* Products */;
 			projectDirPath = "";
@@ -532,38 +524,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DADDC8682848171D0056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-log";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.2;
-			};
-		};
-		DADDC86B284817960056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-log";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DADDC8692848171D0056EBB1 /* Logging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DADDC8682848171D0056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */;
-			productName = Logging;
-		};
-		DADDC86C284817960056EBB1 /* Logging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DADDC86B284817960056EBB1 /* XCRemoteSwiftPackageReference "swift-log" */;
-			productName = Logging;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DADDC83728480A600056EBB1 /* Project object */;
 }

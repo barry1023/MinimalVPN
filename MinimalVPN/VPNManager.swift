@@ -8,81 +8,88 @@
 import Foundation
 import Network
 import NetworkExtension
+import NotificationCenter
+import OSLog
 
-public class VPNManager
-{
-    let manager = NETunnelProviderManager()
+func getNEStatusString(_ status: NEVPNStatus) -> String {
+    switch status.rawValue {
+    case 0:
+        return "invalid"
+    case 1:
+        return "disconnected"
+    case 2:
+        return "connecting"
+    case 3:
+        return "connected"
+    case 4:
+        return "reasserting"
+    case 5:
+        return "disconnecting"
+    default:
+        return ""
+    }
+}
 
-    public init() {}
+public class VPNManager {
+    var manager = NETunnelProviderManager()
+    let logger: Logger
 
-    public func load()
-    {
-        print("Loading...")
-
-        self.manager.loadFromPreferences
-        {
-            maybeError in
-
-            print("Loaded.")
+    public init() {
+        logger = Logger(subsystem: "MinimalVPN", category: "manager")
+        logger.debug("Initialized MinimalVPN Manager")
+        Task {
+            await prepare(logger)
         }
     }
 
-    public func enable()
-    {
-        self.manager.loadFromPreferences
-        {
-            maybeLoadError in
-
-            print("VPNManager loadFromPreferences - 1")
-            if let loadError = maybeLoadError
-            {
-                print("VPNManager encountered an error loading from preferences: \(loadError)")
-            }
+    public func prepare(_ logger: Logger) async {
+        let managers = try? await NETunnelProviderManager.loadAllFromPreferences()
+        if managers != nil && managers!.count > 0 {
+            manager = managers![0]
+            logger.debug("loaded vpn preference")
+        } else {
+            logger.debug("new NETunnelProviderManager")
+            let neProtocol = NETunnelProviderProtocol()
+            neProtocol.serverAddress = "127.0.0.1"
+            neProtocol.providerBundleIdentifier = "\(Bundle.main.bundleIdentifier!).MinimalVPNPacketTunnel"
+            logger.debug("***********\nVPNManager protocolConfiguration:\n\(neProtocol)\n***********")
+            manager.protocolConfiguration = neProtocol
+            manager.localizedDescription = "MinimalVPNTunnel"
             
-
-            self.manager.saveToPreferences
-            {
-                maybeSaveError in
-
-                print("VPNManager saveToPreferences - 1")
-
-                self.manager.loadFromPreferences
-                {
-                    maybeNextLoadError in
-
-                    print("VPNManager loadFromPreferences - 2")
-                    
-                    if let nextLoadError = maybeNextLoadError
-                    {
-                        print("VPNManager encountered an error on second load from preferences: \(nextLoadError)")
-                    }
-
-                    let protocolConfiguration = NETunnelProviderProtocol()
-                    protocolConfiguration.providerBundleIdentifier = "\(Bundle.main.bundleIdentifier!).MinimalVPNPacketTunnel"
-                    protocolConfiguration.serverAddress = ""
-                    protocolConfiguration.includeAllNetworks = true
-                    self.manager.protocolConfiguration = protocolConfiguration
-                    self.manager.localizedDescription = "MinimalVPN"
-                    self.manager.isEnabled = true
-
-                    print("***********\nVPNManager protocolConfiguration:\n\(protocolConfiguration)\n***********")
-
-                    self.manager.saveToPreferences
-                    {
-                        _ in
-
-                        print("VPNManager saveToPreferences - 2")
-
-                        self.manager.loadFromPreferences
-                        {
-                            _ in
-
-                            print("VPNManager loadFromPreferences - 3")
-                            print("VPNManager enable() is done.")
-                        }
+            manager.isEnabled = true
+            manager.isOnDemandEnabled = false
+            try! await manager.saveToPreferences()
+            try! await manager.loadFromPreferences()
+        }
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.NEVPNStatusDidChange,
+            object: manager.connection,
+            queue: OperationQueue.main,
+            using: { notification in
+                let session = notification.object! as! NETunnelProviderSession
+                let status = getNEStatusString(session.status)
+                self.logger.debug("neStatus: \(status, privacy: .public)")
+                if status == "connecting" {
+                    Task {
+                        let waitms: Float = 30
+                        self.logger.debug("wait: \(waitms, privacy: .public)ms")
+                        try! await Task.sleep(nanoseconds: UInt64(waitms*1000000))
+                        self.sendMsg()
                     }
                 }
-            }
-        }
+            })
+    }
+    public func start() {
+        try! manager.connection.startVPNTunnel()
+        logger.debug("startVPNTunnel")
+    }
+    public func stop() {
+        manager.connection.stopVPNTunnel()
+        logger.debug("stopVPNTunnel")
+    }
+    public func sendMsg() {
+        let session = manager.connection as! NETunnelProviderSession
+        try! session.sendProviderMessage(Data("xxxasdf".utf8))
+        logger.debug("sendProviderMessage")
     }
 }

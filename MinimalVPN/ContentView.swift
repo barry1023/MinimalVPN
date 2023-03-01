@@ -14,22 +14,16 @@ struct ContentView: View
     var body: some View
     {
         Text("🫧 MinimalVPN 🫧")
-        Button("Connect")
-        {
-            self.vpn.enable()
-            do
-            {
-                try self.vpn.manager.connection.startVPNTunnel()
-            }
-            catch
-            {
-                print("Failed to start the tunnel: \(error)")
-            }
+        Button("Connect") {
+            self.vpn.start()
         }
         
-        Button("Disconnect")
-        {
-            self.vpn.manager.connection.stopVPNTunnel()
+        Button("Disconnect") {
+            self.vpn.stop()
+        }
+
+        Button("Send") {
+            self.vpn.sendMsg()
         }
     }
 }
